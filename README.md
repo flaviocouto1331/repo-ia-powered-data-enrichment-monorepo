@@ -27,7 +27,7 @@ repo-ia-powered-data-enrichment-monorepo/
 ## 3. Tutorial
 
 * **Passo 1:** Clonar o projeto para sua máquina local.
-* **Passo 2:** Executar o docker compose referente na pasta do projeto `/docker/docker-compose...yml`.
+* **Passo 2:** Executar o docker compose referente na pasta do projeto `/docker/docker-compose-azure-function.yml`.
 * **Passo 3:** Executar o comando para baixar o modelo no container do Ollama (consulte a referência em `/ollama/ollama-docker.txt`):
   ```bash
   docker exec -it container-03112026-ollama ollama pull llama3
