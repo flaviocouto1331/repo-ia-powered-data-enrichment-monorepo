@@ -1,0 +1,72 @@
+﻿docker-compose.yml
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: container-03112026-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - volume-03112026-ollama:/root/.ollama
+    networks:
+      - network-03112026
+
+
+_______________________________________________________________________________________________________________________________
+
+
+Opção 1: O jeito mais recomendado (Padrão da Comunidade)
+A grande maioria dos desenvolvedores prefere manter o docker-compose limpo apenas subindo o serviço do Ollama e gerencia os 
+modelos de duas formas comuns:
+
+Rodar o comando uma única vez após o primeiro docker compose up -d:
+Você só precisa rodar o comando abaixo uma única vez na vida daquele volume (quando criar o ambiente pela primeira vez):
+
+Depois disso, mesmo se você derrubar os containers (docker compose down) e subir de novo, o modelo continuará lá salvo no 
+volume volume-ollama-24102026, e você nunca mais precisará digitar esse comando.
+
+
+
+DOCKER:
+
+docker exec -it container-24102026-ollama ollama pull llama3
+
+
+_______________________________________________________________________________________________________________________________
+
+
+Opção 2: Usar uma imagem customizada ou um comando de inicialização (Avançado)
+Você pode sobrescrever o comando do container do Ollama para que ele suba o serviço e baixe o modelo caso ele ainda não exista:
+
+ollama:
+    image: ollama/ollama:latest
+    container_name: container-24102026-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - volume-ollama-24102026:/root/.ollama
+    networks:
+      - network-24102026
+    # Script que inicia o ollama em background, aguarda 2 segundos e baixa o modelo se não existir
+    command: >
+      sh -c "ollama serve & 
+             sleep 3 && 
+             ollama pull llama3 && 
+             wait"
+
+⚠️ Por que isso pode ser ruim?
+Toda vez que você der docker compose up, o container vai tentar rodar o ollama pull llama3. Embora o Ollama seja inteligente e 
+não baixe tudo de novo se o modelo já estiver no volume, ele ainda fará uma checagem na API que pode atrasar a subida do container.
+
+
+_______________________________________________________________________________________________________________________________
+
+
+Tudo pronto para rodar!
+Suba o ambiente:
+
+Bash
+docker compose up -d --build
+Baixe o modelo no Ollama (caso ainda não tenha feito):
+
+Bash
+docker exec -it container-24102026-ollama ollama run llama3

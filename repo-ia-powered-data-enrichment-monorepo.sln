@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37710.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		docker\docker-compose-sql.yml = docker\docker-compose-sql.yml
+		docker\docker-compose.yml = docker\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ollama", "ollama", "{111270FB-3DA8-4756-ACC4-21251E558DE4}"
+	ProjectSection(SolutionItems) = preProject
+		ollama\ollama-docker.txt = ollama\ollama-docker.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{EED6067A-3DD7-4DE3-8B5B-2A1AFFA65E9A}"
+	ProjectSection(SolutionItems) = preProject
+		sql\scripts.sql = sql\scripts.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_jogos", "api_jogos\api_jogos.csproj", "{4CB30C40-39D5-4EFF-BCD3-F8B1D57CC4BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fn_jogos_llm_llama3", "fn_jogos_llm_llama3\fn_jogos_llm_llama3.csproj", "{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CB30C40-39D5-4EFF-BCD3-F8B1D57CC4BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB30C40-39D5-4EFF-BCD3-F8B1D57CC4BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB30C40-39D5-4EFF-BCD3-F8B1D57CC4BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB30C40-39D5-4EFF-BCD3-F8B1D57CC4BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {231AEE7E-1635-4996-B060-2C200626F941}
+	EndGlobalSection
+EndGlobal
