@@ -12,11 +12,40 @@ O fluxo principal consiste em receber um cadastro básico de um jogo e delegar �
 A solução está dividida nos seguintes módulos e pastas:
 
 repo-ia-powered-data-enrichment-monorepo/
-├── api_jogos/              # API Web ASP.NET Core (Ponto de entrada para requisições)
-├── fn_jogos_llm_llama3/    # Azure Function para processamento orientado a eventos
-├── wks_jogos_llm_llama3/   # Serviço Web/Background híbrido para processamento e endpoints HTTP
-├── docker/                 # Configurações e ficheiros do Docker Compose
-├── ollama/                 # Configurações e modelfiles do Llama 3
-└── scripts/                # Scripts de automação e utilitários do SQL
+api_jogos/              # API Web ASP.NET Core (Ponto de entrada para requisições)
+fn_jogos_llm_llama3/    # Azure Function para processamento orientado a eventos
+wks_jogos_llm_llama3/   # Serviço Web/Background híbrido para processamento e endpoints HTTP
+docker/                 # Configurações e ficheiros do Docker Compose
+ollama/                 # Configurações e modelfiles do Llama 3
+scripts/                # Scripts de automação e utilitários do SQL
 
-3- U+1F3AE
+3- Tutorial
+
+Passo 1 - Clonar o projeto para sua máquina local
+Passo 2 - Executar o docker compose referente da pasta do projeto /docker/docker-compose...yml
+Passo 3 - Executar o comando "docker exec -it container-03112026-ollama ollama pull llama3" da pasta do projeto /ollama/ollama-docker.txt
+Passo 4 - Utilizando uma ferramenta de gerenciamento e visualização de banco de dados, executar o script da pasta do projeto /scripts/scripts.sql
+Passo 5 - No navegador utilize a seguinte url; localhost:1000/swagger/index.html
+Passo 6 - Siga o procedimento abaixo
+
+Execute o endpoint Get > /api/jogos-azure-function
+
+{
+  "nomeJogo": "Sonic the Hedgehog"
+}
+
+Aguarde o retorno da API que está utilizando Inteligência Artificial (LLM - Llama 3 via Ollama) para completar o cadastro.
+
+{
+  "sucesso": true,
+  "mensagem": "Jogo enriquecido com sucesso via Llama 3",
+  "dados": {
+    "nomeJogo": "Sonic the Hedgehog",
+    "generoJogo": "Ação/Esportes",
+    "plataformaJogo": "PC, PlayStation, Xbox, Nintendo Switch",
+    "descricaoJogo": "Jogo de plataforma criado por Yuji Naka e desenvolvido pela Sega..."
+  }
+}
+
+
+
