@@ -41,7 +41,7 @@ repo-ia-powered-data-enrichment-monorepo/
 
 ### Procedimento de Teste
 
-Execute o endpoint **GET** `/api/jogos-azure-function`
+Execute o endpoint **POST** `/api/jogos-azure-function`
 
 **Payload de Requisição:**
 ```json
