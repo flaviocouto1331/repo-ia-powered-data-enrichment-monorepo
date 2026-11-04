@@ -5,8 +5,8 @@ VisualStudioVersion = 17.14.37710.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		docker\docker-compose-sql.yml = docker\docker-compose-sql.yml
 		docker\docker-compose-azure-function.yml = docker\docker-compose-azure-function.yml
+		docker\docker-compose-sql.yml = docker\docker-compose-sql.yml
 		docker\docker-compose-worker-service.yml = docker\docker-compose-worker-service.yml
 	EndProjectSection
 EndProject
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ollama", "ollama", "{111270
 		ollama\ollama-docker.txt = ollama\ollama-docker.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{EED6067A-3DD7-4DE3-8B5B-2A1AFFA65E9A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{EED6067A-3DD7-4DE3-8B5B-2A1AFFA65E9A}"
 	ProjectSection(SolutionItems) = preProject
 		sql\scripts.sql = sql\scripts.sql
 	EndProjectSection
