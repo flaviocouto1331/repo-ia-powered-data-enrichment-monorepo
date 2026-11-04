@@ -64,7 +64,7 @@ namespace api_jogos.Endpoint
             .WithTags("Jogos")
             .WithDescription("Plataforma Ollama\n\nLLM llama3\n\nIA Powered Data Enrichment\n\nPasso 1 - enviar o nome do jogo\n\nPasso 2 - IA vai completar o cadastro inserindo os dados restantes sobre o jogo");
 
-            app.MapPost("/api/jogos-worker", async (JogosRequest _jogo, IConfiguration _configuracao, HttpClient _http, IJogosService _service) => {
+            app.MapPost("/api/jogos-worker-service", async (JogosRequest _jogo, IConfiguration _configuracao, HttpClient _http, IJogosService _service) => {
                 try
                 {
                     if (_jogo is null || string.IsNullOrWhiteSpace(_jogo.NomeJogo)) throw new ArgumentException("Nome do jogo obrigatório.", nameof(_jogo));

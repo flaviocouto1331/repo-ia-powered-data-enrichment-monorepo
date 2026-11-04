@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_jogos", "api_jogos\api_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fn_jogos_llm_llama3", "fn_jogos_llm_llama3\fn_jogos_llm_llama3.csproj", "{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wks_jogos_llm_llama3", "wks_jogos_llm_llama3\wks_jogos_llm_llama3.csproj", "{A09B7293-12FB-466C-9A69-D2E67C6C5C8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB607F6-47FB-41B7-9DE4-B7702CF655AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09B7293-12FB-466C-9A69-D2E67C6C5C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09B7293-12FB-466C-9A69-D2E67C6C5C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09B7293-12FB-466C-9A69-D2E67C6C5C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09B7293-12FB-466C-9A69-D2E67C6C5C8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

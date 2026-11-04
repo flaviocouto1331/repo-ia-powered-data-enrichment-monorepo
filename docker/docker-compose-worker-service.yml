@@ -22,7 +22,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__conexao=Server=sqlserver,1433;Database=db_jogos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=true;      
-      - WorkerServiceOllamaUrl=http://wks-jogos-llm-llama3:80/api/worker-ia
+      - WorkerServiceOllamaUrl=http://wks-jogos-llm-llama3:8080/api/worker-ia
     ports:
       - "1000:8080"
     depends_on:
@@ -53,7 +53,7 @@ services:
       - url_api_jogos=http://api-jogos:8080/api/jogos
       - OLLAMA_HOST=http://ollama:11434
     ports:
-      - "7072:80"
+      - "7072:8080"
     depends_on:
       - api-jogos
       - ollama
