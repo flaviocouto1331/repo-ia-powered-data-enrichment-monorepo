@@ -19,7 +19,7 @@ repo-ia-powered-data-enrichment-monorepo/
 ├── wks_jogos_llm_llama3/   # Serviço Web/Background híbrido para processamento e endpoints HTTP
 ├── docker/                 # Configurações e ficheiros do Docker Compose
 ├── ollama/                 # Configurações e modelfiles do Llama 3
-└── scripts/                # Scripts de automação e utilitários do SQL
+└── sql/                    # Scripts de automação e utilitários do SQL
 ```
 
 ---
