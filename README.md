@@ -19,7 +19,7 @@ repo-ia-powered-data-enrichment-monorepo/
 ├── wks_jogos_llm_llama3/   # Serviço Web/Background híbrido para processamento e endpoints HTTP
 ├── docker/                 # Configurações e ficheiros do Docker Compose
 ├── ollama/                 # Configurações e modelfiles do Llama 3
-└── scripts/                # Scripts de automação e utilitários do SQL
+└── sql/                    # Scripts de automação e utilitários do SQL
 ```
 
 ---
@@ -32,7 +32,7 @@ repo-ia-powered-data-enrichment-monorepo/
   ```bash
   docker exec -it container-03112026-ollama ollama pull llama3
   ```
-* **Passo 4:** Utilizando uma ferramenta de gerenciamento e visualização de banco de dados, executar o script da pasta do projeto `/scripts/scripts.sql`.
+* **Passo 4:** Utilizando uma ferramenta de gerenciamento e visualização de banco de dados, executar o script da pasta do projeto `/sql/scripts.sql`.
 * **Passo 5:** No navegador utilize a seguinte URL do Swagger:  
   `http://localhost:1000/swagger/index.html`
 * **Passo 6:** Siga o procedimento abaixo.
