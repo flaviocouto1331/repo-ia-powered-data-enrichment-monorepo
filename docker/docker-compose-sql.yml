@@ -16,8 +16,6 @@ services:
 volumes:
   volume-03112026-sql:
     driver: local
-  volume-03112026-ollama:
-    driver: local
 
 networks:
   network-03112026:
