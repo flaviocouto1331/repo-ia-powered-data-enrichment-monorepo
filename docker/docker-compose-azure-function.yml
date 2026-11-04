@@ -22,7 +22,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__conexao=Server=sqlserver,1433;Database=db_jogos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=true;      
-      - AzureFunctionOllamaUrl=http://fn-jogos-llm-llama3:80/api/function-ia
+      - AzureFunctionOllamaUrl=http://fn-jogos-llm-llama3:80/api/azure-function-ia
     ports:
       - "1000:8080"
     depends_on:

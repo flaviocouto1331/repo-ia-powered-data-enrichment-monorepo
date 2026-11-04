@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using wks_jogos_llm_llama3.Model.Request;
+using wks_jogos_llm_llama3.Model.Response;
 
-//var builder = Host.CreateApplicationBuilder(args);
-//builder.Services.AddHostedService<Worker>();
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient(string.Empty, client =>
@@ -11,27 +11,25 @@ builder.Services.AddHttpClient(string.Empty, client =>
     client.Timeout = TimeSpan.FromMinutes(3);
 });
 
-//var host = builder.Build();
 var app = builder.Build();
 
-app.MapPost("/api/worker-ia", async (
-    [FromBody] JogosRequest? requisicao,
-    IConfiguration _configuracao,
-    HttpClient _http,
-    ILogger<Program> _logger) =>
+app.MapPost("/api/worker-service-ia", async ([FromBody] JogosRequest? requisicao, IConfiguration _configuracao, HttpClient _http, ILogger<Program> _logger) =>
 {
-    _logger.LogInformation("worker-ia - iniciando processo.");
+    _logger.LogInformation("worker-service-ia - iniciando processo.");
 
     try
     {
         #region Validação
+
         if (requisicao is null || string.IsNullOrWhiteSpace(requisicao.NomeJogo))
         {
             throw new ArgumentException("Nome do jogo obrigatório.", nameof(requisicao));
         }
+
         #endregion
 
         #region Configuração Ollama
+
         var ollamaHost = _configuracao["OLLAMA_HOST"] ?? throw new InvalidOperationException("OLLAMA_HOST inválido.");
         var ollamaUrl = $"{ollamaHost}/api/generate";
 
@@ -49,9 +47,11 @@ app.MapPost("/api/worker-ia", async (
             format = "json",
             stream = false
         };
+
         #endregion
 
         #region Requisição Ollama
+
         var ollamaApi = await _http.PostAsJsonAsync(ollamaUrl, ollamaPayload);
 
         if (!ollamaApi.IsSuccessStatusCode)
@@ -68,7 +68,6 @@ app.MapPost("/api/worker-ia", async (
 
         var campoResponse = ollamaApiSomenteCampoResponse?.Response ?? throw new InvalidOperationException("Ollama retornou resposta nula.");
 
-        // Limpeza de blocos Markdown e chaves extras
         campoResponse = campoResponse.Replace("```json", "").Replace("```", "").Trim();
         var startIndex = campoResponse.IndexOf('{');
         var endIndex = campoResponse.LastIndexOf('}');
@@ -80,6 +79,7 @@ app.MapPost("/api/worker-ia", async (
         var jogosAgenteResponse = JsonSerializer.Deserialize<JogosAgenteResponse>(
             campoResponse,
             new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? throw new InvalidOperationException("Falha ao desserializar a resposta da IA.");
+
         #endregion
 
         return Results.Ok(jogosAgenteResponse);
@@ -94,7 +94,6 @@ app.MapPost("/api/worker-ia", async (
     }
 });
 
-//host.Run();
 app.Run();
 
 public class OllamaApiResponse
@@ -102,19 +101,6 @@ public class OllamaApiResponse
     [JsonPropertyName("response")]
     public string Response { get; set; } = string.Empty;
 }
-
-public class JogosRequest
-{
-    public string NomeJogo { get; set; } = string.Empty;
-}
-
-public class JogosAgenteResponse
-{
-    public string GeneroJogo { get; set; } = string.Empty;
-    public string PlataformaJogo { get; set; } = string.Empty;
-    public string DescricaoJogo { get; set; } = string.Empty;
-}
-
 
 //using wks_jogos_llm_llama3;
 

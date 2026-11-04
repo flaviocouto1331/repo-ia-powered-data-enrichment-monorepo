@@ -27,7 +27,7 @@ namespace api_jogos.Endpoint
                 }
             }).WithTags("Jogos");
 
-            app.MapPost("/api/jogos", async (JogosRequest _jogo, IConfiguration _configuracao, HttpClient _http, IJogosService _service) => {
+            app.MapPost("/api/jogos-azure-function", async (JogosRequest _jogo, IConfiguration _configuracao, HttpClient _http, IJogosService _service) => {
                 try
                 {
                     if (_jogo is null || string.IsNullOrWhiteSpace(_jogo.NomeJogo)) throw new ArgumentException("Nome do jogo obrigatório.", nameof(_jogo));
