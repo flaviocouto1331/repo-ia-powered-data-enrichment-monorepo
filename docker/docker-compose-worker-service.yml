@@ -1,0 +1,71 @@
+services:
+ 
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: container-03112026-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "SenhaForte123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - volume-03112026-sql:/var/opt/mssql
+    networks:
+      - network-03112026    
+      
+  api-jogos:
+    build:
+      context: ..
+      dockerfile: ./api_jogos/Dockerfile    
+    image: image-03112026-api-jogos:latest
+    container_name: container-03112026-api-jogos
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__conexao=Server=sqlserver,1433;Database=db_jogos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=true;      
+      - WorkerServiceOllamaUrl=http://wks-jogos-llm-llama3:80/api/worker-ia
+    ports:
+      - "1000:8080"
+    depends_on:
+      - sqlserver
+    networks:
+      - network-03112026   
+  
+  ollama:
+    image: ollama/ollama:latest
+    container_name: container-03112026-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - volume-03112026-ollama:/root/.ollama
+    networks:
+      - network-03112026  
+
+  wks-jogos-llm-llama3:
+    build:
+      context: ..
+      dockerfile: ./wks_jogos_llm_llama3/Dockerfile
+    image: image-03112026-wks-jogos-llm-llama3:latest
+    container_name: container-03112026-wks-jogos-llm-llama3
+    hostname: wks-jogos-llm-llama3
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - url_api_jogos=http://api-jogos:8080/api/jogos
+      - OLLAMA_HOST=http://ollama:11434
+    ports:
+      - "7072:80"
+    depends_on:
+      - api-jogos
+      - ollama
+    networks:
+      - network-03112026  
+
+volumes:
+  volume-03112026-sql:
+    driver: local
+  volume-03112026-ollama:
+    driver: local
+
+networks:
+  network-03112026:
+    driver: bridge
