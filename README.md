@@ -2,7 +2,7 @@
 
 ## 1. AI-Powered Data Enrichment
 
-Este repositório contém uma solução em monorepo voltada para o **enriquecimento automatizado de dados de jogos** utilizando Inteligência Artificial (LLM - Llama 3 via Ollama).
+Este repositório contém uma solução em monorepo voltada para o **enriquecimento automatizado de dados ** utilizando Inteligência Artificial (LLM - Llama 3 via Ollama).
 
 O fluxo principal consiste em receber um cadastro básico de um jogo e delegar à IA a tarefa de completar inteligentemente os campos faltantes (como gênero, plataformas e descrição detalhada).
 
