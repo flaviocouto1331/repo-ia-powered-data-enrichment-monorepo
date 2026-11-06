@@ -8,10 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/* flaviocouto1331 */
 builder.Services.AddDapperExtension();
 builder.Services.AddJogosExtension();
 
-// HTTP CLIENT 
+/* flaviocouto1331 */
 //builder.Services.AddHttpClient();
 builder.Services.AddHttpClient(string.Empty, client =>
 {
@@ -29,6 +30,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+/* flaviocouto1331 */
 app.AddJogosEndpoint();
 
 app.Run();

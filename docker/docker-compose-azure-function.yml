@@ -47,6 +47,8 @@ services:
       - "10000:10000"
       - "10001:10001"
       - "10002:10002"
+    volumes:
+      - volume-03112026-azurite:/data
     networks:
       - network-03112026
 
@@ -61,7 +63,6 @@ services:
     - AzureWebJobsStorage=UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://azurite
     - FUNCTIONS_WORKER_RUNTIME=dotnet-isolated
     - FUNCTIONS_HTTP_PORT=80
-    - url_api_jogos=http://api-jogos:8080/api/jogos
     - OLLAMA_HOST=http://ollama:11434
     ports:
     - "7072:80"
@@ -76,6 +77,8 @@ volumes:
   volume-03112026-sql:
     driver: local
   volume-03112026-ollama:
+    driver: local
+  volume-03112026-azurite:   
     driver: local
 
 networks:

@@ -62,7 +62,7 @@ namespace api_jogos.Endpoint
                 }
             })
             .WithTags("Jogos")
-            .WithDescription("Plataforma Ollama\n\nLLM llama3\n\nIA Powered Data Enrichment\n\nPasso 1 - enviar o nome do jogo\n\nPasso 2 - IA vai completar o cadastro inserindo os dados restantes sobre o jogo");
+            .WithDescription("Plataforma Ollama\n\nLLM llama3\n\nAI Powered Data Enrichment\n\nPasso 1 - Envie o nome do jogo para que a IA complete o cadastro automaticamente.");
 
             app.MapPost("/api/jogos-worker-service", async (JogosRequest _jogo, IConfiguration _configuracao, HttpClient _http, IJogosService _service) => {
                 try
@@ -99,7 +99,7 @@ namespace api_jogos.Endpoint
                 }
             })
             .WithTags("Jogos")
-            .WithDescription("Plataforma Ollama\n\nLLM llama3\n\nIA Powered Data Enrichment\n\nPasso 1 - enviar o nome do jogo\n\nPasso 2 - IA vai completar o cadastro inserindo os dados restantes sobre o jogo");
+            .WithDescription("Plataforma Ollama\n\nLLM llama3\n\nAI Powered Data Enrichment\n\nPasso 1 - Envie o nome do jogo para que a IA complete o cadastro automaticamente.");
         }
     }
 }
