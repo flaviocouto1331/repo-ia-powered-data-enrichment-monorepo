@@ -101,11 +101,3 @@ public class OllamaApiResponse
     [JsonPropertyName("response")]
     public string Response { get; set; } = string.Empty;
 }
-
-//using wks_jogos_llm_llama3;
-
-//var builder = Host.CreateApplicationBuilder(args);
-//builder.Services.AddHostedService<Worker>();
-
-//var host = builder.Build();
-//host.Run();

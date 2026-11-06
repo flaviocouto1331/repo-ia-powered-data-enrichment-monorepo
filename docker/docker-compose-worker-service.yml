@@ -50,7 +50,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      - url_api_jogos=http://api-jogos:8080/api/jogos
       - OLLAMA_HOST=http://ollama:11434
     ports:
       - "7072:8080"
